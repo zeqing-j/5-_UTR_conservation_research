@@ -19,10 +19,6 @@ def generate_bash_script(chrom, start, end, strand, output_dir):
     os.chmod(script_path, 0o755)
 
 def generate_sh_files(input_dir, output_dir):
-    """
-    Generate .sh script files for each BED file in the input directory.
-    """
-    # Ensure the output directory exists or create it
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     maf_path_prefix = "/ocean/projects/bio200049p/zjiang2/Scripts/OtherBedRun/Othermaf/"
