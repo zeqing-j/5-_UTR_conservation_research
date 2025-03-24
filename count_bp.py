@@ -12,8 +12,8 @@ def calculate_percentage(filepath):
         
         if mfe_structure_index is not None:
             mfe_structure = ''.join(source_lines[mfe_structure_index + 1:])
-            mfe_structure = mfe_structure.split(' ')[0]  # Remove numbers at the end
-            mfe_structure = mfe_structure.strip()  # Remove leading/trailing whitespaces
+            mfe_structure = mfe_structure.split(' ')[0] 
+            mfe_structure = mfe_structure.strip()  
             num_open_parentheses = mfe_structure.count('(')
             percentage = (num_open_parentheses / len(mfe_structure)) * 100
         return percentage
