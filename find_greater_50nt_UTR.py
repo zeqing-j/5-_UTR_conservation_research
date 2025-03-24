@@ -15,15 +15,12 @@ def process_files(directory):
 
             for i, line in enumerate(lines):
                 if "MFE Structure" in line:
-                    # The next line after "MFE Structure"
                     mfe_structure_line = lines[i + 1].strip()
-                    # Remove the final forward and backward bracket and the word inside the bracket
-                    mfe_structure = mfe_structure_line.split(' ')[0]  # Remove numbers at the end
+                    mfe_structure = mfe_structure_line.split(' ')[0]
                     mfe_structure = mfe_structure.strip()
                     mfe_structure_length = len(mfe_structure_line)
                     break
-
-            # If the length of the structure line is greater than 50, find "Minimum Free Energy: "
+                    
             if mfe_structure_line and mfe_structure_length >= 50:
                 for line in lines:
                     if "Minimum Free Energy: " in line:
@@ -32,7 +29,6 @@ def process_files(directory):
                             mfe_value = mfe_value.group(1)
                             break
 
-            # If all conditions are met, store the result
             if mfe_value:
                 result = f"{filename[:-4]}:{mfe_value}"
                 results.append(result)
@@ -40,10 +36,7 @@ def process_files(directory):
     return results
 
 def main():
-    # Set the directory containing the txt files
     directory = "/ocean/projects/bio200049p/zjiang2/Files/5primedata/bigbed_whole_genome/test_dir"
-
-    # Process the files and print the results
     output = process_files(directory)
     output_file = "/ocean/projects/bio200049p/zjiang2/Files/5primedata/bigbed_whole_genome/greater50UTR.txt"
     with open(output_file, 'w') as f:
