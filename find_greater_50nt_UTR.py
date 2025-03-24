@@ -2,21 +2,17 @@ import os
 import re
 
 def process_files(directory):
-    # List to store the results
     results = []
 
-    # Iterate over all files in the directory
     for filename in os.listdir(directory):
         if filename.endswith(".txt"):
             filepath = os.path.join(directory, filename)
             with open(filepath, 'r') as file:
                 lines = file.readlines()
-
-            # Initialize variables to store information
+                
             mfe_structure_line = None
             mfe_value = None
 
-            # Search for "MFE Structure"
             for i, line in enumerate(lines):
                 if "MFE Structure" in line:
                     # The next line after "MFE Structure"
