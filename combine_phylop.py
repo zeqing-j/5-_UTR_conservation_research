@@ -1,6 +1,6 @@
 
 def get_transcript_name(full_name):
-    """Extract the transcript name without the number and underscore."""
+    # Extract the transcript name without the number and underscore.
     return full_name.split('_')[0]
 
 def process_file(input_file, output_file):
@@ -11,14 +11,12 @@ def process_file(input_file, output_file):
         while True:
             name_line = infile.readline().strip()
             if not name_line:
-                # End of file
                 break
 
             score_line = infile.readline().strip()
             current_transcript = get_transcript_name(name_line)
             
             if previous_transcript and current_transcript != previous_transcript:
-                # Write the previous transcript name and combined scores to the output file
                 outfile.write(previous_transcript + '\n')
                 outfile.write(','.join(map(str, combined_scores)) + '\n')
                 combined_scores = []
@@ -26,7 +24,6 @@ def process_file(input_file, output_file):
             previous_transcript = current_transcript
             combined_scores.extend(map(float, score_line.split(',')))
 
-        # Write the last transcript if it hasn't been written
         if previous_transcript:
             outfile.write(previous_transcript + '\n')
             outfile.write(','.join(map(str, combined_scores)) + '\n')
