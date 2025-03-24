@@ -1,7 +1,7 @@
 from collections import defaultdict
 import math
 
-# Step 1: Human codon usage table
+# Human codon usage table
 codon_usage = {
     'UUU': 17.6, 'UCU': 15.2, 'UAU': 12.2, 'UGU': 10.6,
     'UUC': 20.3, 'UCC': 17.7, 'UAC': 15.3, 'UGC': 12.6,
@@ -21,7 +21,7 @@ codon_usage = {
     'GUG': 28.1, 'GCG': 7.4, 'GAG': 39.6, 'GGG': 16.5
 }
 
-# Step 2: Calculate relative adaptiveness (w) for each codon
+# Calculate relative adaptiveness (w) for each codon
 w_values = {}
 codon_table = {
     'F': ['UUU', 'UUC'], 'L': ['UUA', 'UUG', 'CUU', 'CUC', 'CUA', 'CUG'],
@@ -48,7 +48,7 @@ for aa, codons in rscu_values.items():
         w_values[codon] = rscu / max_rscu
         print(f"{codon}: {w_values[codon]}")
 
-# Step 3: Calculate CAI
+# Calculate CAI
 def calculate_cai(sequence):
     cai = 1.0
     codon_count = 0
@@ -66,7 +66,7 @@ def calculate_cai(sequence):
 
     return cai
 
-# Step 4: Process input file and write to output file
+# write to output file
 def process_file(input_file, output_file):
     with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
         lines = infile.readlines()
