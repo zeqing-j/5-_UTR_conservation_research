@@ -12,13 +12,13 @@ def copy_file(source_file, destination_file):
         
         if mfe_structure_index is not None:
             mfe_structure = ''.join(source_lines[mfe_structure_index + 1:])
-            mfe_structure = mfe_structure.split(' ')[0]  # Remove numbers at the end
-            mfe_structure = mfe_structure.strip()  # Remove leading/trailing whitespaces
+            mfe_structure = mfe_structure.split(' ')[0]  
+            mfe_structure = mfe_structure.strip()  
             mfe_structure = "#=GC SS_cons " + mfe_structure
             
             with open(destination_file, 'a') as destination:
                 destination.write(mfe_structure)
-                destination.write('\n')  # Add a newline for separation
+                destination.write('\n')
 
             print(f"MFE Structure content copied to '{destination_file}' successfully.")
         else:
