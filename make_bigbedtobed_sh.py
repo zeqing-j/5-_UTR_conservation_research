@@ -27,8 +27,7 @@ def generate_sh_files(input_dir, output_dir):
         os.makedirs(output_dir)
     maf_path_prefix = "/ocean/projects/bio200049p/zjiang2/Scripts/OtherBedRun/Othermaf/"
     refTargets_path_prefix = "/ocean/projects/bio200049p/zjiang2/Scripts/OtherBedRun/Other/"
-
-    # Iterate over all files in the input directory
+    
     for filename in os.listdir(input_dir):
         if filename.endswith(".bed"):
             with open(filename, 'r') as file:
