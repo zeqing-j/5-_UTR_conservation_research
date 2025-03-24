@@ -23,14 +23,11 @@ def main():
     file1_path = "/ocean/projects/bio200049p/zjiang2/Files/5primedata/bigbed_whole_genome/greater50UTR.txt"
     file2_path = "/ocean/projects/bio200049p/zjiang2/Files/5primedata/bigbed_whole_genome/bp_percentage.txt"
 
-    # Read the data from the two files
     file1_data = read_file(file1_path)
     file2_data = read_file(file2_path)
 
-    # Find common names and their associated numbers
     common_entries = find_common_entries(file1_data, file2_data)
 
-    # Write the results to a new file
     output_file = "/ocean/projects/bio200049p/zjiang2/Files/5primedata/bigbed_whole_genome/common_results.txt"
     write_common_entries(output_file, common_entries)
 
