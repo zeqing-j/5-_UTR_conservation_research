@@ -15,24 +15,22 @@ def copy_file(destination_file, source_file):
 
         if mfe_structure_index is not None:
             mfe_structure = ''.join(source_lines[mfe_structure_index + 1:])
-            mfe_structure = mfe_structure.split(' ')[0]  # Remove numbers at the end
-            mfe_structure = mfe_structure.strip()  # Remove leading/trailing whitespaces
+            mfe_structure = mfe_structure.split(' ')[0]  
+            mfe_structure = mfe_structure.strip() 
             mfe_structure = "#=GC SS_cons " + mfe_structure + "\n"
 
         with open(destination_file, 'r') as dest:
             dest_content = dest.readlines()
 
-        updated_content = dest_content[:-1]  # Exclude the last two lines
+        updated_content = dest_content[:-1]  
 
         updated_content.append(mfe_structure)
-        updated_content.extend(dest_content[-1:])  # Add back the last two lines
+        updated_content.extend(dest_content[-1:]) 
 
-        # Write the updated content back to the destination file
         with open(destination_file, 'w') as dest:
             dest.writelines(updated_content)
 
 def find_file(directory, filename):
-    # Search for the file in the directory
     for root, dirs, files in os.walk(directory):
         if filename in files:
             return True
@@ -42,7 +40,6 @@ def find_file(directory, filename):
 
 def fastatosto(dir1, dir2):
     files_in_dir1 = os.listdir(dir1)
-    #print(files_in_dir1)
     for filename in files_in_dir1:
         new_file_list = filename.split(".")
         new_file = new_file_list[0] + "." + new_file_list[1]
