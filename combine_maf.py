@@ -12,10 +12,8 @@ def extract_file_info(filename):
     return None
 
 def combine_maf_files(input_dir, output_dir):
-    # Create a dictionary to group files by transcript_id and strand
     grouped_files = defaultdict(list)
 
-    # Traverse the input directory
     for root, dirs, files in os.walk(input_dir):
         for file in files:
             if file.endswith(".maf"):
@@ -24,15 +22,12 @@ def combine_maf_files(input_dir, output_dir):
                     key = (info['transcript_id'], info['strand'])
                     grouped_files[key].append((int(info['start']), file))
     
-    # Ensure the output directory exists
     os.makedirs(output_dir, exist_ok=True)
 
-    # Process each group of files
+
     for (transcript_id, strand), files in grouped_files.items():
-        # Sort files by the start position
         sorted_files = sorted(files)
 
-        # Create the output file name
         output_filename = f"{transcript_id}_{strand}.maf"
         output_filepath = os.path.join(output_dir, output_filename)
 
